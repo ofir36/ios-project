@@ -622,7 +622,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.menachi.Class6Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs.iosProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Class6Demo/Class6Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -643,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.menachi.Class6Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs.iosProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Class6Demo/Class6Demo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
