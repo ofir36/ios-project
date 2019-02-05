@@ -12,7 +12,7 @@ import UIKit
 
 class ModelNotification{
     static let studentsListNotification = MyNotification<[Student]>("com.menachi.studentlist")
-    static let postsListNotification = MyNotification<[Posts]>("com.ios.postsList")
+    static let postsListNotification = MyNotification<[Post]>("com.ios.postsList")
     
     class MyNotification<T>{
         let name:String
@@ -58,6 +58,18 @@ class Model {
     private init(){
         //modelSql = ModelSql()
     }
+    
+    
+    // --- POSTS ----
+    
+    
+    func addNewPost(post:Post){
+        modelFirebase.addNewPost(post: post)
+        //Student.addNew(database: modelSql!.database, student: student)
+    }
+    
+    
+    // --- STUDENTS ----
     
     func getAllStudents(){
         //1. read local students last update date

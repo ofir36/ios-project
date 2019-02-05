@@ -35,11 +35,11 @@ extension Post{
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let stId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!)
                 let text = String(cString:sqlite3_column_text(sqlite3_stmt,1)!)
-                let date = Date(timeIntervalSince1970: sqlite3_column_double(sqlite3_stmt, 2))
+//                let date = Double(sqlite3_column_double(sqlite3_stmt, 2))
                 let userId = String(cString:sqlite3_column_text(sqlite3_stmt,3)!)
                 let image = String(cString:sqlite3_column_text(sqlite3_stmt,4)!)
 
-                data.append(Post(_id:stId, _text:text, _date:date, _userId:userId, _image:image))
+                data.append(Post(_id:stId, _text:text, _userId:userId, _image:image))
             }
         }
         sqlite3_finalize(sqlite3_stmt)
@@ -51,13 +51,12 @@ extension Post{
         if (sqlite3_prepare_v2(database,"INSERT OR REPLACE INTO POSTS(POST_ID, POST_TEXT, POST_DATE, USER_ID, IMAGE_URL) VALUES (?,?,?,?,?);",-1, &sqlite3_stmt,nil) == SQLITE_OK){
             let id = post.id.cString(using: .utf8)
             let text = post.text.cString(using: .utf8)
-            let date = post.date.timeIntervalSince1970
             let userId = post.userId.cString(using: .utf8)
             let image = post.image.cString(using: .utf8)
             
             sqlite3_bind_text(sqlite3_stmt, 1, id,-1,nil);
             sqlite3_bind_text(sqlite3_stmt, 2, text,-1,nil);
-            sqlite3_bind_double(sqlite3_stmt, 3, date)
+            sqlite3_bind_double(sqlite3_stmt, 3, 0)
             sqlite3_bind_text(sqlite3_stmt, 4, userId,-1,nil);
             sqlite3_bind_text(sqlite3_stmt, 5, image,-1,nil);
 
