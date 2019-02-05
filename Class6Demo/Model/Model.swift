@@ -12,7 +12,8 @@ import UIKit
 
 class ModelNotification{
     static let studentsListNotification = MyNotification<[Student]>("com.menachi.studentlist")
-
+    static let postsListNotification = MyNotification<[Posts]>("com.ios.postsList")
+    
     class MyNotification<T>{
         let name:String
         var count = 0;
