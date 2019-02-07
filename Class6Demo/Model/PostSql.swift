@@ -30,22 +30,22 @@ extension Post{
     static func getAll(database: OpaquePointer?)->[Post]{
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [Post]()
-        if (sqlite3_prepare_v2(database,"SELECT * from POSTS;",-1,&sqlite3_stmt,nil)
+        if (sqlite3_prepare_v2(database,"SELECT * from POSTS ORDER BY POST_DATE DESC;",-1,&sqlite3_stmt,nil)
             == SQLITE_OK){
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let stId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!)
                 let text = String(cString:sqlite3_column_text(sqlite3_stmt,1)!)
-//                let date = Double(sqlite3_column_double(sqlite3_stmt, 2))
+                let date = Double(sqlite3_column_double(sqlite3_stmt, 2))
                 let userId = String(cString:sqlite3_column_text(sqlite3_stmt,3)!)
                 let image = String(cString:sqlite3_column_text(sqlite3_stmt,4)!)
 
-                data.append(Post(_id:stId, _text:text, _userId:userId, _image:image))
+                data.append(Post(_id:stId, _text:text, _userId:userId, _image:image, _lastUpdate: date))
             }
         }
         sqlite3_finalize(sqlite3_stmt)
         return data
     }
-    
+
     static func addNew(database: OpaquePointer?, post:Post){
         var sqlite3_stmt: OpaquePointer? = nil
         if (sqlite3_prepare_v2(database,"INSERT OR REPLACE INTO POSTS(POST_ID, POST_TEXT, POST_DATE, USER_ID, IMAGE_URL) VALUES (?,?,?,?,?);",-1, &sqlite3_stmt,nil) == SQLITE_OK){
@@ -56,7 +56,7 @@ extension Post{
             
             sqlite3_bind_text(sqlite3_stmt, 1, id,-1,nil);
             sqlite3_bind_text(sqlite3_stmt, 2, text,-1,nil);
-            sqlite3_bind_double(sqlite3_stmt, 3, 0)
+            sqlite3_bind_double(sqlite3_stmt, 3, post.lastUpdate!)
             sqlite3_bind_text(sqlite3_stmt, 4, userId,-1,nil);
             sqlite3_bind_text(sqlite3_stmt, 5, image,-1,nil);
 

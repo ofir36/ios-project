@@ -31,6 +31,8 @@
 		970DE44822086AC100ADEC4B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DE44722086AC100ADEC4B /* Post.swift */; };
 		970DE44A220871D200ADEC4B /* PostSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DE449220871D200ADEC4B /* PostSql.swift */; };
 		970DE44C2209BDAD00ADEC4B /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DE44B2209BDAD00ADEC4B /* NewPostViewController.swift */; };
+		970DE450220ACAFB00ADEC4B /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DE44F220ACAFB00ADEC4B /* PostsTableViewController.swift */; };
+		970DE452220AD03700ADEC4B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DE451220AD03700ADEC4B /* PostTableViewCell.swift */; };
 		FA5EDDD5C191077B554C691C /* Pods_Class6Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200FE022419C2CE1980DD4B9 /* Pods_Class6Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		970DE44722086AC100ADEC4B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		970DE449220871D200ADEC4B /* PostSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSql.swift; sourceTree = "<group>"; };
 		970DE44B2209BDAD00ADEC4B /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		970DE44F220ACAFB00ADEC4B /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		970DE451220AD03700ADEC4B /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A25DFA33A88BF994091C6403 /* Pods-Class6Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class6Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class6Demo/Pods-Class6Demo.release.xcconfig"; sourceTree = "<group>"; };
 		ABA3938B4A2F3ED906CA2B21 /* Pods_Class6DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Class6DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD800BF5B57F244DB4650DC /* Pods-Class6DemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class6DemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class6DemoUITests/Pods-Class6DemoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				3D7A00AA21A5A0380018958A /* StudentDetailsViewController.swift */,
 				3D7803F521AED30F00E9218F /* Class6Demo-Bridging-Header.h */,
 				970DE44B2209BDAD00ADEC4B /* NewPostViewController.swift */,
+				970DE44F220ACAFB00ADEC4B /* PostsTableViewController.swift */,
+				970DE451220AD03700ADEC4B /* PostTableViewCell.swift */,
 			);
 			path = Class6Demo;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 			files = (
 				3D7A00A521A596170018958A /* Student.swift in Sources */,
 				3D7A009E21A5875C0018958A /* StudentsTableViewController.swift in Sources */,
+				970DE452220AD03700ADEC4B /* PostTableViewCell.swift in Sources */,
 				3D7803FA21AEDCD000E9218F /* StudentSql.swift in Sources */,
 				3D7A007221A582D70018958A /* ViewController.swift in Sources */,
 				970DE44822086AC100ADEC4B /* Post.swift in Sources */,
@@ -448,6 +455,7 @@
 				3D7A00A721A596DE0018958A /* Model.swift in Sources */,
 				3D7803F121AED07A00E9218F /* ModelSql.swift in Sources */,
 				970DE44A220871D200ADEC4B /* PostSql.swift in Sources */,
+				970DE450220ACAFB00ADEC4B /* PostsTableViewController.swift in Sources */,
 				3D7A00A921A59B7C0018958A /* NewStudentViewController.swift in Sources */,
 				3DA6325721B8001100BEFADA /* ModelFirebase.swift in Sources */,
 				3D7A00AB21A5A0380018958A /* StudentDetailsViewController.swift in Sources */,

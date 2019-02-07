@@ -12,23 +12,27 @@ import Firebase;
 class Post {
     let id:String
     let text:String
-//    var date:Double?
     let userId:String
     let image:String
     var lastUpdate:Double?
+    var date:Date {
+        get {
+            return Date(timeIntervalSince1970: lastUpdate! / 1000);
+        }
+    }
     
-    init(_id:String, _text:String, _userId:String, _image:String = ""){
+    init(_id:String, _text:String, _userId:String, _image:String = "", _lastUpdate:Double? = nil){
         id = _id
         text = _text
         userId = _userId
         image = _image
-//        date = _date
+        lastUpdate = _lastUpdate
+        
     }
     
     init(json:[String:Any]) {
         id = json["id"] as! String
-        text = json["name"] as! String
-//        date = json["date"] as? Double
+        text = json["text"] as! String
         userId = json["userId"] as! String
         if json["image"] != nil{
             image = json["image"] as! String
@@ -46,7 +50,6 @@ class Post {
         var json = [String:Any]()
         json["id"] = id
         json["text"] = text
-//        json["date"] = date
         json["userId"] = userId
         json["image"] = image
         json["lastUpdate"] = ServerValue.timestamp()
