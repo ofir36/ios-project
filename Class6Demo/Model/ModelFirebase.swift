@@ -20,6 +20,28 @@ class ModelFirebase {
         ref = Database.database().reference()
     }
     
+    // ---- POSTS ----
+    
+    func addNewPost(post:Post){
+        ref.child("posts").child(post.id).setValue(post.toJson())
+    }
+    
+    func getAllPostsAndObserve(from:Double, callback:@escaping ([Post])->Void){
+        let stRef = ref.child("posts")
+        let fbQuery = stRef.queryOrdered(byChild: "lastUpdate").queryStarting(atValue: from)
+        fbQuery.observe(.value) { (snapshot) in
+            var data = [Post]()
+            if let value = snapshot.value as? [String:Any] {
+                for (_, json) in value{
+                    data.append(Post(json: json as! [String : Any]))
+                }
+            }
+            callback(data)
+        }
+    }
+    
+    // ---- STUDENTS ----
+    
     func getAllStudentsAndObserve(from:Double, callback:@escaping ([Student])->Void){
         let stRef = ref.child("students")
         let fbQuery = stRef.queryOrdered(byChild: "lastUpdate").queryStarting(atValue: from)
@@ -68,7 +90,7 @@ class ModelFirebase {
     }
 
     lazy var storageRef = Storage.storage().reference(forURL:
-        "gs://ios2018-f658d.appspot.com")
+        "gs://ios-project-9f8b7.appspot.com")
         
     func saveImage(image:UIImage, name:(String),
                              callback:@escaping (String?)->Void){

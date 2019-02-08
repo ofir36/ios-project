@@ -12,7 +12,8 @@ import UIKit
 
 class ModelNotification{
     static let studentsListNotification = MyNotification<[Student]>("com.menachi.studentlist")
-
+    static let postsListNotification = MyNotification<[Post]>("com.cs.postsList")
+    
     class MyNotification<T>{
         let name:String
         var count = 0;
@@ -57,6 +58,44 @@ class Model {
     private init(){
         //modelSql = ModelSql()
     }
+    
+    
+    // --- POSTS ----
+    
+    
+    func addNewPost(post:Post){
+        modelFirebase.addNewPost(post: post)
+        //Student.addNew(database: modelSql!.database, student: student)
+    }
+    
+    func getAllPosts() {
+        //1. read local students last update date
+        var lastUpdated = Post.getLastUpdateDate(database: modelSql.database)
+        lastUpdated += 1;
+        
+        //2. get updates from firebase and observe
+        modelFirebase.getAllPostsAndObserve(from:lastUpdated){ (data:[Post]) in
+            //3. write new records to the local DB
+            for st in data{
+                Post.addNew(database: self.modelSql.database, post: st)
+                if (st.lastUpdate != nil && st.lastUpdate! > lastUpdated){
+                    lastUpdated = st.lastUpdate!
+                }
+            }
+            
+            //4. update the local students last update date
+            Post.setLastUpdateDate(database: self.modelSql.database, date: lastUpdated)
+            
+            //5. get the full data
+            let stFullData = Post.getAll(database: self.modelSql.database)
+            
+            //6. notify observers with full data
+            ModelNotification.postsListNotification.notify(data: stFullData)
+        }
+    }
+    
+    
+    // --- STUDENTS ----
     
     func getAllStudents(){
         //1. read local students last update date
