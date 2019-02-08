@@ -11,7 +11,6 @@ import UIKit
 class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var image:UIImage?
-    var vSpinner : UIView?
 
     @IBOutlet weak var textInput: UITextView!
     @IBOutlet weak var imageView: UIImageView!
@@ -40,7 +39,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
 
     
     @IBAction func onShare(_ sender: Any) {
-        self.showSpinner(onView: self.view)
+        Utility.showSpinner(onView: self.view)
         if image != nil {
             Model.instance.saveImage(image: image!, name: UUID().uuidString){ (url:String?) in
                 var _url = ""
@@ -59,29 +58,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
         Model.instance.addNewPost(post: post)
         print("post saved successfully")
         self.navigationController?.popViewController(animated: true)
-        self.removeSpinner()
-    }
-    
-    func showSpinner(onView : UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
-        }
-        
-        vSpinner = spinnerView
-    }
-    
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-        }
+        Utility.removeSpinner()
     }
     
     /*
