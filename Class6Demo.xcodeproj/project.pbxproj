@@ -38,6 +38,7 @@
 		9776C97D220DDAF500DD21B5 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776C97C220DDAF500DD21B5 /* Utility.swift */; };
 		97D0F33C220EFDC400287A63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0F33B220EFDC400287A63 /* ProfileViewController.swift */; };
 		97D0F33E220F02B600287A63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0F33D220F02B600287A63 /* User.swift */; };
+		97D0F340220F0ACD00287A63 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0F33F220F0ACD00287A63 /* EditProfileViewController.swift */; };
 		FA5EDDD5C191077B554C691C /* Pods_Class6Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200FE022419C2CE1980DD4B9 /* Pods_Class6Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		9776C97C220DDAF500DD21B5 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		97D0F33B220EFDC400287A63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		97D0F33D220F02B600287A63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		97D0F33F220F0ACD00287A63 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A25DFA33A88BF994091C6403 /* Pods-Class6Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class6Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class6Demo/Pods-Class6Demo.release.xcconfig"; sourceTree = "<group>"; };
 		ABA3938B4A2F3ED906CA2B21 /* Pods_Class6DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Class6DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD800BF5B57F244DB4650DC /* Pods-Class6DemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class6DemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class6DemoUITests/Pods-Class6DemoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				970DE455220DC97D00ADEC4B /* LoginViewController.swift */,
 				9776C97C220DDAF500DD21B5 /* Utility.swift */,
 				97D0F33B220EFDC400287A63 /* ProfileViewController.swift */,
+				97D0F33F220F0ACD00287A63 /* EditProfileViewController.swift */,
 			);
 			path = Class6Demo;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				970DE44822086AC100ADEC4B /* Post.swift in Sources */,
 				3D5BA9EA21D3AB8A005738E4 /* LastUpdateDates.swift in Sources */,
 				3D7A00A721A596DE0018958A /* Model.swift in Sources */,
+				97D0F340220F0ACD00287A63 /* EditProfileViewController.swift in Sources */,
 				97D0F33E220F02B600287A63 /* User.swift in Sources */,
 				3D7803F121AED07A00E9218F /* ModelSql.swift in Sources */,
 				970DE454220DC88A00ADEC4B /* RegisterViewController.swift in Sources */,

@@ -50,6 +50,14 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "editProfileSegue")
+        {
+            let editProfieVC = segue.destination as! EditProfileViewController
+            editProfieVC.user = self.user
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

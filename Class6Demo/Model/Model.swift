@@ -94,6 +94,12 @@ class Model {
         }
     }
     
+    // ---- USERS ----
+    
+    func updateUser(user:User)
+    {
+        modelFirebase.updateUser(user: user)
+    }
     
     // --- STUDENTS ----
     

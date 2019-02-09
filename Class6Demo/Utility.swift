@@ -39,5 +39,4 @@ class Utility {
             self.vSpinner = nil
         }
     }
-
 }
