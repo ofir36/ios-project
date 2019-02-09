@@ -54,7 +54,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
     func sharePost(url:String)  {
-        let post = Post(_id: UUID().uuidString, _text: textInput.text, _userId: "111", _image: url)
+        let post = Post(_id: UUID().uuidString, _text: textInput.text, _userId: Model.instance.getUserId(), _image: url)
         Model.instance.addNewPost(post: post)
         print("post saved successfully")
         self.navigationController?.popViewController(animated: true)

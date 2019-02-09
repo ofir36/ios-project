@@ -49,21 +49,18 @@ class PostsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
 
-        let st = data[indexPath.row]
-        cell.userNameLabel.text = st.userId
-        cell.postTextView.text = st.text
+        let post = data[indexPath.row]
+        cell.postTextView.text = post.text
         
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.long
         formatter.timeStyle = DateFormatter.Style.short
-        cell.dateLabel.text = formatter.string(from: st.date)
-        
-//        cell.dateLabel.text = Date(timeIntervalSince1970: st.lastUpdate! / 1000).addingTimeInterval(<#T##timeInterval: TimeInterval##TimeInterval#>)
+        cell.dateLabel.text = formatter.string(from: post.date)
         
         cell.postImageView?.image = nil
         cell.postImageView!.tag = indexPath.row
-        if st.image != "" {
-            Model.instance.getImage(url: st.image) { (image:UIImage?) in
+        if post.image != "" {
+            Model.instance.getImage(url: post.image) { (image:UIImage?) in
                 if (cell.postImageView!.tag == indexPath.row){
                     if image != nil {
                         cell.postImageView?.image = image!
@@ -72,7 +69,23 @@ class PostsTableViewController: UITableViewController {
             }
         }
         
-        
+        cell.userNameLabel.text = ""
+        cell.userImageView.image = UIImage(named: "User")
+        cell.userImageView!.tag = indexPath.row
+        Model.instance.getUserDetails(byId: post.userId){
+            (user:User)in
+            cell.userNameLabel.text = user.name;
+            if user.image != "" {
+                Model.instance.getImage(url: user.image) { (image:UIImage?) in
+                    if (cell.userImageView!.tag == indexPath.row){
+                        if image != nil {
+                            cell.userImageView?.image = image!
+                        }
+                    }
+                }
+            }
+        }
+
         return cell
     }
     
