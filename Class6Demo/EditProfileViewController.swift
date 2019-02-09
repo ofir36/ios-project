@@ -24,9 +24,12 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         {
             self.nameInput.text = user!.name;
             self.aboutInput.text = user!.about
-            Model.instance.getImage(url: user!.image){
-                (image:UIImage?) in
-                self.profileImageView.image = image
+            if (user!.image != "")
+            {
+                Model.instance.getImage(url: user!.image){
+                    (image:UIImage?) in
+                    self.profileImageView.image = image
+                }
             }
         }
         
@@ -49,7 +52,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                     self.editDetails(url: _url)
                 }
             }else{
-                self.editDetails(url: "")
+                self.editDetails(url: user!.image)
             }
         }
     }

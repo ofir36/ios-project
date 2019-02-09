@@ -49,12 +49,17 @@ class ModelFirebase {
     
     func getUserDetails(userId: String, callback: @escaping (User)->Void)
     {
-        ref.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
+        ref.child("users").child(userId).observeSingleEvent(of: .value){ (snapshot) in
             let value = snapshot.value as! [String : Any]
             callback(User(json: value))
-        }) { (error) in
-            print(error.localizedDescription)
+        }
+    }
+    
+    func getUserDetailsAndObserve(userId: String, callback: @escaping (User)->Void)
+    {
+        ref.child("users").child(userId).observe(.value){ (snapshot) in
+            let value = snapshot.value as! [String : Any]
+            callback(User(json: value))
         }
     }
     

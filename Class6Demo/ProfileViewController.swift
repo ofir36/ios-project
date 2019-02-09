@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    var userListener:NSObjectProtocol?
     var user:User?;
     
     @IBOutlet weak var nameInput: UILabel!
@@ -18,14 +19,14 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Model.instance.getUserDetails(userId: Model.instance.getUserId()){
+        
+        userListener = ModelNotification.userNotification.observe(){
             (user:User) in
             self.user = user;
             
             self.nameInput.text = user.name;
             self.aboutInput.text = user.about
-        
+            
             if(user.image != "")
             {
                 Model.instance.getImage(url: user.image){
@@ -35,7 +36,15 @@ class ProfileViewController: UIViewController {
             }
         }
         
+        Model.instance.getUserDetails();
+        
         // Do any additional setup after loading the view.
+    }
+    
+    deinit{
+        if userListener != nil{
+            ModelNotification.userNotification.remove(observer: userListener!)
+        }
     }
     
     @IBAction func onLogout(_ sender: Any) {

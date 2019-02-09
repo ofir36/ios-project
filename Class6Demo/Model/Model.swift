@@ -13,6 +13,7 @@ import UIKit
 class ModelNotification{
     static let studentsListNotification = MyNotification<[Student]>("com.menachi.studentlist")
     static let postsListNotification = MyNotification<[Post]>("com.cs.postsList")
+    static let userNotification = MyNotification<User>("com.cs.user")
     
     class MyNotification<T>{
         let name:String
@@ -83,7 +84,7 @@ class Model {
                 }
             }
             
-            //4. update the local students last update date
+            //4. update the local posts last update date
             Post.setLastUpdateDate(database: self.modelSql.database, date: lastUpdated)
             
             //5. get the full data
@@ -99,6 +100,39 @@ class Model {
     func updateUser(user:User)
     {
         modelFirebase.updateUser(user: user)
+    }
+    
+    func getUserDetails(userId:String, callback:@escaping (User)->Void)
+    {
+        modelFirebase.getUserDetails(userId: userId, callback: callback);
+    }
+    
+    func getUserDetails()
+    {
+        let userId = self.getUserId();
+        
+        //1. read local students last update date
+        var lastUpdated = User.getLastUpdateDate(database: modelSql.database)
+        lastUpdated += 1;
+        
+        //2. get updates from firebase and observe
+        modelFirebase.getUserDetailsAndObserve(userId: userId){ (data:User) in
+            
+            //3. write new records to the local DB
+            User.addNew(database: self.modelSql.database, user: data)
+            if (data.lastUpdate != nil && data.lastUpdate! > lastUpdated){
+                lastUpdated = data.lastUpdate!
+            }
+            
+            //4. update the local users last update date
+            User.setLastUpdateDate(database: self.modelSql.database, date: lastUpdated)
+            
+            //5. get the full data
+            let stFullData = User.get(database: self.modelSql.database, byId: userId)
+            
+            //6. notify observers with full data
+            ModelNotification.userNotification.notify(data: stFullData!)
+        }
     }
     
     // --- STUDENTS ----
@@ -209,10 +243,5 @@ class Model {
     
     func logout() -> Bool {
         return modelFirebase.logout()
-    }
-    
-    func getUserDetails(userId:String, callback:@escaping (User)->Void)
-    {
-        modelFirebase.getUserDetails(userId: userId, callback: callback);
     }
 }
