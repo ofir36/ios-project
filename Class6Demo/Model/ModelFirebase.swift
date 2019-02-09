@@ -40,6 +40,13 @@ class ModelFirebase {
         }
     }
     
+    // --- USERS ----
+    
+    func updateUser(user: User)
+    {
+        ref.child("users").child(user.id).setValue(user.toJson())
+    }
+    
     // ---- STUDENTS ----
     
     func getAllStudentsAndObserve(from:Double, callback:@escaping ([Student])->Void){
@@ -139,9 +146,11 @@ class ModelFirebase {
         
     }
     
-    func createUser(email:String, password:String, callback:@escaping (Bool)->Void) {
+    func createUser(email:String, password:String, name:String, callback:@escaping (Bool)->Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            if authResult?.user != nil {
+            if let userId = authResult?.user.uid {
+                let user = User(_id: userId, _name: name)
+                self.updateUser(user: user)
                 callback (true)
             }else{
                 callback (false)

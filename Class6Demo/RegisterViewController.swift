@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var vPasswordInput: UITextField!
@@ -22,7 +23,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func onRegister(_ sender: Any) {
-        if (emailInput.text?.isEmpty ?? true || passwordInput.text?.isEmpty ?? true || vPasswordInput.text?.isEmpty ?? true)
+        if (nameInput.text?.isEmpty ?? true || emailInput.text?.isEmpty ?? true || passwordInput.text?.isEmpty ?? true || vPasswordInput.text?.isEmpty ?? true)
         {
             Utility.showAlert("Please fill all the details", self)
         }
@@ -32,7 +33,7 @@ class RegisterViewController: UIViewController {
         }
         else {
             Utility.showSpinner(onView: self.view)
-            Model.instance.createUser(email: emailInput.text!, password: passwordInput.text!)
+            Model.instance.createUser(email: emailInput.text!, password: passwordInput.text!, name: nameInput.text!)
             { (result : Bool) in
                 Utility.removeSpinner()
                 if (!result)
