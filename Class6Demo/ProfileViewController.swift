@@ -10,9 +10,31 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    var user:User?;
+    
+    @IBOutlet weak var nameInput: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var aboutInput: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Model.instance.getUserDetails(userId: Model.instance.getUserId()){
+            (user:User) in
+            self.user = user;
+            
+            self.nameInput.text = user.name;
+            self.aboutInput.text = user.about
+        
+            if(user.image != "")
+            {
+                Model.instance.getImage(url: user.image){
+                    (image:UIImage?) in
+                    self.profileImageView.image = image
+                }
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
     

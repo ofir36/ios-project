@@ -33,6 +33,7 @@ class RegisterViewController: UIViewController {
         }
         else {
             Utility.showSpinner(onView: self.view)
+            
             Model.instance.createUser(email: emailInput.text!, password: passwordInput.text!, name: nameInput.text!)
             { (result : Bool) in
                 Utility.removeSpinner()

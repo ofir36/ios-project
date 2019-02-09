@@ -204,4 +204,9 @@ class Model {
     func logout() -> Bool {
         return modelFirebase.logout()
     }
+    
+    func getUserDetails(userId:String, callback:@escaping (User)->Void)
+    {
+        modelFirebase.getUserDetails(userId: userId, callback: callback);
+    }
 }

@@ -47,6 +47,17 @@ class ModelFirebase {
         ref.child("users").child(user.id).setValue(user.toJson())
     }
     
+    func getUserDetails(userId: String, callback: @escaping (User)->Void)
+    {
+        ref.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as! [String : Any]
+            callback(User(json: value))
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     // ---- STUDENTS ----
     
     func getAllStudentsAndObserve(from:Double, callback:@escaping ([Student])->Void){
