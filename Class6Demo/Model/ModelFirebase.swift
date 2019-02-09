@@ -149,7 +149,7 @@ class ModelFirebase {
         }
     }
     
-    func checkIfSignIn() -> Bool {
+    func checkIfSignedIn() -> Bool {
         return (Auth.auth().currentUser != nil)
     }
     
@@ -157,7 +157,15 @@ class ModelFirebase {
         return Auth.auth().currentUser!.uid
     }
     
-    
+    func logout() -> Bool{
+        do {
+            try Auth.auth().signOut();
+            return true;
+        }
+        catch {
+            return false;
+        }
+    }
 }
 
 

@@ -192,4 +192,16 @@ class Model {
     func createUser(email:String, password:String, callback:@escaping (Bool)->Void) {
         modelFirebase.createUser(email: email, password: password, callback: callback)
     }
+    
+    func checkIfSignedIn() -> Bool {
+        return modelFirebase.checkIfSignedIn()
+    }
+    
+    func getUserId() -> String {
+        return modelFirebase.getUserId()
+    }
+    
+    func logout() -> Bool {
+        return modelFirebase.logout()
+    }
 }
