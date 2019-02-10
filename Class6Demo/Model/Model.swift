@@ -99,6 +99,11 @@ class Model {
         return Post.get(database: modelSql.database, byUserId: byUserId)
     }
     
+    func deletePost(post:Post)
+    {
+        modelFirebase.deletePost(post: post)
+    }
+    
     // ---- USERS ----
     
     func updateUser(user:User)

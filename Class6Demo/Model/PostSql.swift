@@ -11,7 +11,7 @@ import Foundation
 extension Post{
     static func createTable(database: OpaquePointer?)  {
         var errormsg: UnsafeMutablePointer<Int8>? = nil
-        let res = sqlite3_exec(database, "CREATE TABLE IF NOT EXISTS POSTS (POST_ID TEXT PRIMARY KEY, POST_TEXT TEXT, POST_DATE DOUBLE, USER_ID TEXT, IMAGE_URL TEXT)", nil, nil, &errormsg);
+        let res = sqlite3_exec(database, "CREATE TABLE IF NOT EXISTS POSTS (POST_ID TEXT PRIMARY KEY, POST_TEXT TEXT, POST_DATE DOUBLE, USER_ID TEXT, IMAGE_URL TEXT, IS_DELETED INT)", nil, nil, &errormsg);
         if(res != 0){
             print("error creating table");
             return
@@ -30,7 +30,7 @@ extension Post{
     static func getAll(database: OpaquePointer?)->[Post]{
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [Post]()
-        if (sqlite3_prepare_v2(database,"SELECT * from POSTS ORDER BY POST_DATE DESC;",-1,&sqlite3_stmt,nil)
+        if (sqlite3_prepare_v2(database,"SELECT * from POSTS WHERE IS_DELETED = 0 ORDER BY POST_DATE DESC;",-1,&sqlite3_stmt,nil)
             == SQLITE_OK){
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let stId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!)
@@ -48,7 +48,7 @@ extension Post{
 
     static func addNew(database: OpaquePointer?, post:Post){
         var sqlite3_stmt: OpaquePointer? = nil
-        if (sqlite3_prepare_v2(database,"INSERT OR REPLACE INTO POSTS(POST_ID, POST_TEXT, POST_DATE, USER_ID, IMAGE_URL) VALUES (?,?,?,?,?);",-1, &sqlite3_stmt,nil) == SQLITE_OK){
+        if (sqlite3_prepare_v2(database,"INSERT OR REPLACE INTO POSTS(POST_ID, POST_TEXT, POST_DATE, USER_ID, IMAGE_URL, IS_DELETED) VALUES (?,?,?,?,?,?);",-1, &sqlite3_stmt,nil) == SQLITE_OK){
             let id = post.id.cString(using: .utf8)
             let text = post.text.cString(using: .utf8)
             let userId = post.userId.cString(using: .utf8)
@@ -59,8 +59,8 @@ extension Post{
             sqlite3_bind_double(sqlite3_stmt, 3, post.lastUpdate!)
             sqlite3_bind_text(sqlite3_stmt, 4, userId,-1,nil);
             sqlite3_bind_text(sqlite3_stmt, 5, image,-1,nil);
+            sqlite3_bind_int(sqlite3_stmt, 6, Int32(post.isDeleted))
 
-            
             if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
                 print("new row added succefully")
             }
@@ -75,7 +75,7 @@ extension Post{
     static func get(database: OpaquePointer?, byUserId:String)->[Post]{
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [Post]()
-        if (sqlite3_prepare_v2(database,"SELECT * from POSTS WHERE USER_ID = ? ORDER BY POST_DATE DESC;",-1,&sqlite3_stmt,nil)
+        if (sqlite3_prepare_v2(database,"SELECT * from POSTS WHERE USER_ID = ? AND IS_DELETED = 0 ORDER BY POST_DATE DESC;",-1,&sqlite3_stmt,nil)
             == SQLITE_OK){
             sqlite3_bind_text(sqlite3_stmt, 1, byUserId,-1,nil);
             

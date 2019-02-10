@@ -26,6 +26,11 @@ class ModelFirebase {
         ref.child("posts").child(post.id).setValue(post.toJson())
     }
     
+    func deletePost(post:Post){
+        post.isDeleted = 1;
+        addNewPost(post: post)
+    }
+    
     func getAllPostsAndObserve(from:Double, callback:@escaping ([Post])->Void){
         let stRef = ref.child("posts")
         let fbQuery = stRef.queryOrdered(byChild: "lastUpdate").queryStarting(atValue: from)
