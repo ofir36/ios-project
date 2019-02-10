@@ -21,7 +21,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onChooseImage(_ sender: Any) {
+    @IBAction func onChooseImage(_ sender: UITapGestureRecognizer) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType =
