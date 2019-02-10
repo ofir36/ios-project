@@ -13,7 +13,7 @@
         <!--Profile View Controller-->
         <scene sceneID="uK9-yr-JEV">
             <objects>
-                <viewController id="cnB-EZ-703" customClass="ProfileViewController" customModule="Class6Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cnB-EZ-703" customClass="ProfileViewController" customModule="iShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ukn-J8-GtW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,13 +73,13 @@
         <!--User Posts Table View Controller-->
         <scene sceneID="MhJ-Wa-paK">
             <objects>
-                <tableViewController storyboardIdentifier="UserPostsViewController" id="GoP-MX-gem" customClass="UserPostsTableViewController" customModule="Class6Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UserPostsViewController" id="GoP-MX-gem" customClass="UserPostsTableViewController" customModule="iShare" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0mB-uW-cDd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="226" id="sSE-Rb-bVL" customClass="UserPostTableViewCell" customModule="Class6Demo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="226" id="sSE-Rb-bVL" customClass="UserPostTableViewCell" customModule="iShare" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="226"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sSE-Rb-bVL" id="77c-Xe-lqP">
@@ -127,7 +127,7 @@
         <!--Edit Profile-->
         <scene sceneID="eAF-tH-XCb">
             <objects>
-                <viewController title="Edit Profile" id="5go-3w-H1R" customClass="EditProfileViewController" customModule="Class6Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit Profile" id="5go-3w-H1R" customClass="EditProfileViewController" customModule="iShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QG1-Ra-YnD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,7 +197,7 @@
         <!--New Post-->
         <scene sceneID="QDy-w4-2b1">
             <objects>
-                <viewController title="New Post" id="hf2-Ih-mZ7" customClass="NewPostViewController" customModule="Class6Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Post" id="hf2-Ih-mZ7" customClass="NewPostViewController" customModule="iShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5kF-5R-Q5F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,7 +256,7 @@
         <!--Login View Controller-->
         <scene sceneID="XQS-lT-ceH">
             <objects>
-                <viewController id="kPt-6A-sdA" customClass="LoginViewController" customModule="Class6Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kPt-6A-sdA" customClass="LoginViewController" customModule="iShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yeq-E6-g4R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,15 +280,8 @@
                                 <rect key="frame" x="87" y="33" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTr-Ue-fv7">
-                                <rect key="frame" x="57" y="233" width="46" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujk-pA-00X">
-                                <rect key="frame" x="57" y="262" width="79" height="21"/>
+                                <rect key="frame" x="57" y="271" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -317,6 +310,13 @@
                                     <action selector="onLogin:" destination="kPt-6A-sdA" eventType="touchUpInside" id="6zI-PU-cg7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTr-Ue-fv7">
+                                <rect key="frame" x="57" y="233" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="R3B-yf-bcd"/>
@@ -334,7 +334,7 @@
         <!--Register View Controller-->
         <scene sceneID="Fdl-JW-BXV">
             <objects>
-                <viewController id="lXW-nP-cjV" customClass="RegisterViewController" customModule="Class6Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lXW-nP-cjV" customClass="RegisterViewController" customModule="iShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hc8-6J-63h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,13 +383,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="V. Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vap-kO-Ofp">
-                                <rect key="frame" x="45" y="269" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wO0-vd-mX4">
                                 <rect key="frame" x="179" y="266" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -418,6 +411,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="V. Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vap-kO-Ofp">
+                                <rect key="frame" x="45" y="269" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92600226402282715" green="0.94035917520523071" blue="0.98432594537734985" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="zX5-Vf-VpU"/>
@@ -455,13 +455,13 @@
         <!--Feed-->
         <scene sceneID="Tqq-LN-fU6">
             <objects>
-                <tableViewController id="5iG-Rz-bUn" customClass="PostsTableViewController" customModule="Class6Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="5iG-Rz-bUn" customClass="PostsTableViewController" customModule="iShare" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OCi-Pz-bDd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="295" id="brM-PB-cyy" customClass="PostTableViewCell" customModule="Class6Demo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="295" id="brM-PB-cyy" customClass="PostTableViewCell" customModule="iShare" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="295"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="brM-PB-cyy" id="mz0-Tf-fmh">

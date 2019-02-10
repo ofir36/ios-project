@@ -20,6 +20,8 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboardWhenTappedAround()
 
         if (post != nil){
             self.textInput.text = post?.text;

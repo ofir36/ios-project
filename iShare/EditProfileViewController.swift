@@ -19,6 +19,8 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboardWhenTappedAround()
 
         if (user != nil)
         {
