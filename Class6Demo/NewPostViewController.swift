@@ -9,15 +9,30 @@
 import UIKit
 
 class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // edited post
+    var post: Post?
     
     var image:UIImage?
 
     @IBOutlet weak var textInput: UITextView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var shareButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if (post != nil){
+            self.textInput.text = post?.text;
+            self.shareButton.setTitle("Save", for: .normal)
+            navigationItem.title = "Edit Post"
+            
+            if (post?.image != nil){
+                Model.instance.getImage(url: post!.image){
+                    (image:UIImage?) in
+                    self.imageView.image = image
+                }
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -48,15 +63,27 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
                 }
                 self.sharePost(url: _url)
             }
-        }else{
+        }
+        else if (self.post != nil)
+        {
+            self.sharePost(url: self.post!.image)
+        }
+        else{
             self.sharePost(url: "")
         }
     }
     
     func sharePost(url:String)  {
-        let post = Post(_id: UUID().uuidString, _text: textInput.text, _userId: Model.instance.getUserId(), _image: url)
+        var id = UUID().uuidString;
+        if (self.post != nil)
+        {
+            id = self.post!.id
+        }
+        
+        let post = Post(_id: id, _text: textInput.text, _userId: Model.instance.getUserId(), _image: url)
+        
         Model.instance.addNewPost(post: post)
-        print("post saved successfully")
+
         self.navigationController?.popViewController(animated: true)
         Utility.removeSpinner()
     }

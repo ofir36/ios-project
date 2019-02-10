@@ -64,7 +64,6 @@ class UserPostsTableViewController: UITableViewController {
         
         return cell
     }
-    
 
     /*
     // Override to support conditional editing of the table view.
@@ -101,14 +100,24 @@ class UserPostsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "editPostSegue")
+        {
+            let vc = segue.destination as! NewPostViewController;
+            let selectedCell = sender as! UserPostTableViewCell
+            let indexPath = tableView.indexPath(for: selectedCell)
+            let selectedPost = data[indexPath!.row]
+            vc.post = selectedPost
+            
+        }
     }
-    */
+    
 
 }

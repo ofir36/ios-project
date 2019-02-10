@@ -68,7 +68,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTA-zK-w5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lAP-fZ-ZX3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="1151.9704433497539"/>
+            <point key="canvasLocation" x="-2" y="1428"/>
         </scene>
         <!--User Posts Table View Controller-->
         <scene sceneID="MhJ-Wa-paK">
@@ -110,6 +110,7 @@
                                     <outlet property="postDateLabel" destination="DWt-9P-Fgn" id="kHd-ZX-JnA"/>
                                     <outlet property="postImageView" destination="S1c-jM-azy" id="IV9-Bo-0p5"/>
                                     <outlet property="postTextLabel" destination="CyM-Rm-fpJ" id="SXh-ED-g6M"/>
+                                    <segue destination="hf2-Ih-mZ7" kind="show" identifier="editPostSegue" id="eFr-x4-2V9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -121,7 +122,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAp-UR-Ke9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="1815"/>
+            <point key="canvasLocation" x="-2" y="761"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="eAF-tH-XCb">
@@ -191,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NcM-aZ-qcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845.60000000000002" y="812.807881773399"/>
+            <point key="canvasLocation" x="876" y="1428"/>
         </scene>
         <!--New Post-->
         <scene sceneID="QDy-w4-2b1">
@@ -239,6 +240,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="tei-PU-bX7"/>
                     <connections>
                         <outlet property="imageView" destination="GYN-ac-X44" id="zI9-Mz-NLf"/>
+                        <outlet property="shareButton" destination="rEI-gH-omf" id="Zva-uS-b0W"/>
                         <outlet property="textInput" destination="XdG-hW-q3W" id="xF1-eX-RfY"/>
                     </connections>
                 </viewController>
@@ -249,7 +251,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="808.79999999999995" y="102.70935960591133"/>
+            <point key="canvasLocation" x="876" y="465"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="XQS-lT-ceH">
@@ -430,7 +432,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfe-Lf-X7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CxM-md-n1i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2327" y="131"/>
+            <point key="canvasLocation" x="-2334" y="103"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F9j-iK-DtV">
@@ -754,7 +756,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4N-74-QKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-818.39999999999998" y="1151.9704433497539"/>
+            <point key="canvasLocation" x="-818" y="1428"/>
         </scene>
     </scenes>
     <resources>
@@ -764,4 +766,7 @@
         <image name="User" width="30" height="30"/>
         <image name="avatar" width="210" height="240"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="eFr-x4-2V9"/>
+    </inferredMetricsTieBreakers>
 </document>
