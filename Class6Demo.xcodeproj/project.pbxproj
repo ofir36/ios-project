@@ -40,6 +40,8 @@
 		97D0F33E220F02B600287A63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0F33D220F02B600287A63 /* User.swift */; };
 		97D0F340220F0ACD00287A63 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0F33F220F0ACD00287A63 /* EditProfileViewController.swift */; };
 		97D0F342220F14FA00287A63 /* UserSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0F341220F14FA00287A63 /* UserSql.swift */; };
+		97DED98B221049C100803330 /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DED98A221049C100803330 /* UserPostTableViewCell.swift */; };
+		97DED98D22104AF600803330 /* UserPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DED98C22104AF600803330 /* UserPostsTableViewController.swift */; };
 		FA5EDDD5C191077B554C691C /* Pods_Class6Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200FE022419C2CE1980DD4B9 /* Pods_Class6Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +107,8 @@
 		97D0F33D220F02B600287A63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		97D0F33F220F0ACD00287A63 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		97D0F341220F14FA00287A63 /* UserSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSql.swift; sourceTree = "<group>"; };
+		97DED98A221049C100803330 /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
+		97DED98C22104AF600803330 /* UserPostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsTableViewController.swift; sourceTree = "<group>"; };
 		A25DFA33A88BF994091C6403 /* Pods-Class6Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class6Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class6Demo/Pods-Class6Demo.release.xcconfig"; sourceTree = "<group>"; };
 		ABA3938B4A2F3ED906CA2B21 /* Pods_Class6DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Class6DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD800BF5B57F244DB4650DC /* Pods-Class6DemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class6DemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class6DemoUITests/Pods-Class6DemoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				9776C97C220DDAF500DD21B5 /* Utility.swift */,
 				97D0F33B220EFDC400287A63 /* ProfileViewController.swift */,
 				97D0F33F220F0ACD00287A63 /* EditProfileViewController.swift */,
+				97DED98A221049C100803330 /* UserPostTableViewCell.swift */,
+				97DED98C22104AF600803330 /* UserPostsTableViewController.swift */,
 			);
 			path = Class6Demo;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				3D5BA9EA21D3AB8A005738E4 /* LastUpdateDates.swift in Sources */,
 				3D7A00A721A596DE0018958A /* Model.swift in Sources */,
 				97D0F340220F0ACD00287A63 /* EditProfileViewController.swift in Sources */,
+				97DED98D22104AF600803330 /* UserPostsTableViewController.swift in Sources */,
 				97D0F33E220F02B600287A63 /* User.swift in Sources */,
 				3D7803F121AED07A00E9218F /* ModelSql.swift in Sources */,
 				970DE454220DC88A00ADEC4B /* RegisterViewController.swift in Sources */,
@@ -490,6 +497,7 @@
 				97D0F33C220EFDC400287A63 /* ProfileViewController.swift in Sources */,
 				3D7A00A021A58C5B0018958A /* StudentTableViewCell.swift in Sources */,
 				970DE44C2209BDAD00ADEC4B /* NewPostViewController.swift in Sources */,
+				97DED98B221049C100803330 /* UserPostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

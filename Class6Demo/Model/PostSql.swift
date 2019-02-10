@@ -69,8 +69,28 @@ extension Post{
     }
     
     static func get(database: OpaquePointer?, byId:String)->Post?{
-        
         return nil;
+    }
+    
+    static func get(database: OpaquePointer?, byUserId:String)->[Post]{
+        var sqlite3_stmt: OpaquePointer? = nil
+        var data = [Post]()
+        if (sqlite3_prepare_v2(database,"SELECT * from POSTS WHERE USER_ID = ? ORDER BY POST_DATE DESC;",-1,&sqlite3_stmt,nil)
+            == SQLITE_OK){
+            sqlite3_bind_text(sqlite3_stmt, 1, byUserId,-1,nil);
+            
+            while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
+                let stId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!)
+                let text = String(cString:sqlite3_column_text(sqlite3_stmt,1)!)
+                let date = Double(sqlite3_column_double(sqlite3_stmt, 2))
+                let userId = String(cString:sqlite3_column_text(sqlite3_stmt,3)!)
+                let image = String(cString:sqlite3_column_text(sqlite3_stmt,4)!)
+                
+                data.append(Post(_id:stId, _text:text, _userId:userId, _image:image, _lastUpdate: date))
+            }
+        }
+        sqlite3_finalize(sqlite3_stmt)
+        return data
     }
     
     static func getLastUpdateDate(database: OpaquePointer?)->Double{

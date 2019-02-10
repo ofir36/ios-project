@@ -95,6 +95,10 @@ class Model {
         }
     }
     
+    func getAllPosts(byUserId: String)->[Post]{
+        return Post.get(database: modelSql.database, byUserId: byUserId)
+    }
+    
     // ---- USERS ----
     
     func updateUser(user:User)

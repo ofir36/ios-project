@@ -1,33 +1,27 @@
 //
-//  PostsTableViewController.swift
+//  UserPostsTableViewController.swift
 //  Class6Demo
 //
-//  Created by Ofir Zamir on 06/02/2019.
+//  Created by Ofir Zamir on 10/02/2019.
 //  Copyright © 2019 Studio. All rights reserved.
 //
 
 import UIKit
 
-class PostsTableViewController: UITableViewController {
-    var data = [Post]()
-    var postsListener:NSObjectProtocol?
+class UserPostsTableViewController: UITableViewController {
 
+    var data = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        postsListener = ModelNotification.postsListNotification.observe(){
-            (data:Any) in
-            self.data = data as! [Post]
-            self.tableView.reloadData()
-        }
         
-        Model.instance.getAllPosts()
-    }
-    
-    deinit{
-        if postsListener != nil{
-            ModelNotification.postsListNotification.remove(observer: postsListener!)
-        }
+        data = Model.instance.getAllPosts(byUserId: Model.instance.getUserId())
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -39,21 +33,22 @@ class PostsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! UserPostTableViewCell
+        
         let post = data[indexPath.row]
-        cell.postTextView.text = post.text
+        cell.postTextLabel.text = post.text
         
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.long
         formatter.timeStyle = DateFormatter.Style.short
-        cell.dateLabel.text = formatter.string(from: post.date)
+        cell.postDateLabel.text = formatter.string(from: post.date)
         
         cell.postImageView?.image = nil
         cell.postImageView!.tag = indexPath.row
@@ -67,23 +62,6 @@ class PostsTableViewController: UITableViewController {
             }
         }
         
-        cell.userNameLabel.text = ""
-        cell.userImageView.image = UIImage(named: "User")
-        cell.userImageView!.tag = indexPath.row
-        Model.instance.getUserDetails(byId: post.userId){
-            (user:User)in
-            cell.userNameLabel.text = user.name;
-            if user.image != "" {
-                Model.instance.getImage(url: user.image) { (image:UIImage?) in
-                    if (cell.userImageView!.tag == indexPath.row){
-                        if image != nil {
-                            cell.userImageView?.image = image!
-                        }
-                    }
-                }
-            }
-        }
-
         return cell
     }
     

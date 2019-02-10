@@ -17,6 +17,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var aboutInput: UILabel!
     
+    @IBOutlet weak var userPostsView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +40,13 @@ class ProfileViewController: UIViewController {
         
         Model.instance.getUserDetails();
         
-        // Do any additional setup after loading the view.
+        // Initialize user posts view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let cvc: UserPostsTableViewController = storyboard.instantiateViewController(withIdentifier: "UserPostsViewController") as! UserPostsTableViewController
+        self.addChildViewController(cvc)
+        cvc.view.frame = self.userPostsView.frame
+        cvc.view.frame.origin = CGPoint.zero
+        self.userPostsView.addSubview(cvc.view)
     }
     
     deinit{
@@ -66,6 +74,7 @@ class ProfileViewController: UIViewController {
             editProfieVC.user = self.user
         }
     }
+
     
     /*
     // MARK: - Navigation
