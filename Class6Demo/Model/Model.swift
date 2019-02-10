@@ -11,7 +11,6 @@ import UIKit
 
 
 class ModelNotification{
-    static let studentsListNotification = MyNotification<[Student]>("com.menachi.studentlist")
     static let postsListNotification = MyNotification<[Post]>("com.cs.postsList")
     static let userProfileNotification = MyNotification<User>("com.cs.userProfile")
     
@@ -134,44 +133,7 @@ class Model {
         }
     }
     
-    // --- STUDENTS ----
-    
-    func getAllStudents(){
-        //1. read local students last update date
-        var lastUpdated = Student.getLastUpdateDate(database: modelSql.database)
-        lastUpdated += 1;
-        
-        //2. get updates from firebase and observe
-        modelFirebase.getAllStudentsAndObserve(from:lastUpdated){ (data:[Student]) in
-            //3. write new records to the local DB
-            for st in data{
-                Student.addNew(database: self.modelSql.database, student: st)
-                if (st.lastUpdate != nil && st.lastUpdate! > lastUpdated){
-                    lastUpdated = st.lastUpdate!
-                }
-            }
-            
-            //4. update the local students last update date
-            Student.setLastUpdateDate(database: self.modelSql.database, date: lastUpdated)
-            
-            //5. get the full data
-            let stFullData = Student.getAll(database: self.modelSql.database)
-            
-            //6. notify observers with full data
-            ModelNotification.studentsListNotification.notify(data: stFullData)
-        }
-        
-    }
-    
-    func addNewStudent(student:Student){
-        modelFirebase.addNewStudent(student: student);
-        //Student.addNew(database: modelSql!.database, student: student)
-    }
-    
-    func getStudent(byId:String)->Student?{
-        return modelFirebase.getStudent(byId:byId)
-        //return Student.get(database: modelSql!.database, byId: byId);
-    }
+    // --- IMAGES ----
     
     func saveImage(image:UIImage, name:(String),callback:@escaping (String?)->Void){
         modelFirebase.saveImage(image: image, name: name, callback: callback)

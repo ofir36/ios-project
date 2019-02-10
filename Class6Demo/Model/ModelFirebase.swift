@@ -68,54 +68,7 @@ class ModelFirebase {
         }
     }
     
-    // ---- STUDENTS ----
-    
-    func getAllStudentsAndObserve(from:Double, callback:@escaping ([Student])->Void){
-        let stRef = ref.child("students")
-        let fbQuery = stRef.queryOrdered(byChild: "lastUpdate").queryStarting(atValue: from)
-        fbQuery.observe(.value) { (snapshot) in
-            var data = [Student]()
-            if let value = snapshot.value as? [String:Any] {
-                for (_, json) in value{
-                    data.append(Student(json: json as! [String : Any]))
-                }
-            }
-            callback(data)
-        }
-    }
-    
-    func getAllStudents(callback:@escaping ([Student])->Void){
-//        ref.child("students").observeSingleEvent(of: .value, with: { (snapshot) in
-//            // Get user value
-//            var data = [Student]()
-//            let value = snapshot.value as! [String:Any]
-//            for (_, json) in value{
-//                data.append(Student(json: json as! [String : Any]))
-//            }
-//            callback(data)
-//        }) { (error) in
-//            print(error.localizedDescription)
-//        }
-        
-        ref.child("students").observe(.value, with: {
-            (snapshot) in
-            // Get user value
-            var data = [Student]()
-            let value = snapshot.value as! [String:Any]
-            for (_, json) in value{
-                data.append(Student(json: json as! [String : Any]))
-            }
-            callback(data)
-        })
-    }
-    
-    func addNewStudent(student:Student){
-        ref.child("students").child(student.id).setValue(student.toJson())
-    }
-    
-    func getStudent(byId:String)->Student?{
-        return nil
-    }
+    // --- IMAGES ---
 
     lazy var storageRef = Storage.storage().reference(forURL:
         "gs://ios-project-9f8b7.appspot.com")
