@@ -10,18 +10,31 @@ import UIKit
 
 class UserPostsTableViewController: UITableViewController {
 
+    var postsListener:NSObjectProtocol?
     var data = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         data = Model.instance.getAllPosts(byUserId: Model.instance.getUserId())
-
+        
+        postsListener = ModelNotification.postsListNotification.observe(){_ in
+            self.data = Model.instance.getAllPosts(byUserId: Model.instance.getUserId())
+            self.tableView.reloadData()
+        }
+        //setEditing(true, animated: true)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    deinit{
+        if postsListener != nil{
+            ModelNotification.postsListNotification.remove(observer: postsListener!)
+        }
     }
 
     // MARK: - Table view data source

@@ -13,7 +13,7 @@ import UIKit
 class ModelNotification{
     static let studentsListNotification = MyNotification<[Student]>("com.menachi.studentlist")
     static let postsListNotification = MyNotification<[Post]>("com.cs.postsList")
-    static let userNotification = MyNotification<User>("com.cs.user")
+    static let userProfileNotification = MyNotification<User>("com.cs.userProfile")
     
     class MyNotification<T>{
         let name:String
@@ -125,7 +125,7 @@ class Model {
             
             User.addNew(database: self.modelSql.database, user: data)
             let fullData = User.get(database: self.modelSql.database, byId: userId)
-            ModelNotification.userNotification.notify(data: fullData!)
+            ModelNotification.userProfileNotification.notify(data: fullData!)
         }
     }
     

@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userListener = ModelNotification.userNotification.observe(){
+        userListener = ModelNotification.userProfileNotification.observe(){
             (user:User) in
             self.user = user;
             
@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController {
     
     deinit{
         if userListener != nil{
-            ModelNotification.userNotification.remove(observer: userListener!)
+            ModelNotification.userProfileNotification.remove(observer: userListener!)
         }
     }
     
