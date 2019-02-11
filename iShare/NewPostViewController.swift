@@ -28,7 +28,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
             self.shareButton.setTitle("Save", for: .normal)
             navigationItem.title = "Edit Post"
             
-            if (post?.image != nil){
+            if (post?.image != ""){
                 Model.instance.getImage(url: post!.image){
                     (image:UIImage?) in
                     self.imageView.image = image
@@ -56,6 +56,12 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
 
     
     @IBAction func onShare(_ sender: Any) {
+        if (post == nil && image == nil && textInput.text == "")
+        {
+            Utility.showAlert("Can't share an empty post", self)
+            return
+        }
+        
         Utility.showSpinner(onView: self.view)
         if image != nil {
             Model.instance.saveImage(image: image!, name: UUID().uuidString){ (url:String?) in
