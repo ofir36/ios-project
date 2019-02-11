@@ -166,8 +166,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGT-Dl-smg">
-                                <rect key="frame" x="162" y="525" width="51" height="30"/>
+                                <rect key="frame" x="159" y="524" width="60" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Update"/>
                                 <connections>
                                     <action selector="onUpdate:" destination="5go-3w-H1R" eventType="touchUpInside" id="eNp-rK-YRX"/>

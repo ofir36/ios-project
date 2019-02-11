@@ -15,9 +15,19 @@ import FirebaseDatabase
 class ModelFirebase {
     var ref: DatabaseReference!
     
+    var postsReference: DatabaseReference?
+    var postsObserver: DatabaseHandle?
+    var userReference: DatabaseReference?
+    var userObserver: DatabaseHandle?
+    
     init() {
         FirebaseApp.configure()
         ref = Database.database().reference()
+    }
+    
+    func removeObservers() {
+        postsReference?.removeObserver(withHandle: postsObserver!)
+        userReference?.removeObserver(withHandle: userObserver!)
     }
     
     // ---- POSTS ----
@@ -32,9 +42,9 @@ class ModelFirebase {
     }
     
     func getAllPostsAndObserve(from:Double, callback:@escaping ([Post])->Void){
-        let stRef = ref.child("posts")
-        let fbQuery = stRef.queryOrdered(byChild: "lastUpdate").queryStarting(atValue: from)
-        fbQuery.observe(.value) { (snapshot) in
+        postsReference = ref.child("posts")
+        let fbQuery = postsReference!.queryOrdered(byChild: "lastUpdate").queryStarting(atValue: from)
+        postsObserver = fbQuery.observe(.value) { (snapshot) in
             var data = [Post]()
             if let value = snapshot.value as? [String:Any] {
                 for (_, json) in value{
@@ -62,7 +72,8 @@ class ModelFirebase {
     
     func getUserDetailsAndObserve(userId: String, callback: @escaping (User)->Void)
     {
-        ref.child("users").child(userId).observe(.value){ (snapshot) in
+        userReference = ref.child("users").child(userId)
+        userObserver = userReference!.observe(.value){ (snapshot) in
             let value = snapshot.value as! [String : Any]
             callback(User(json: value))
         }
@@ -143,6 +154,7 @@ class ModelFirebase {
     func logout() -> Bool{
         do {
             try Auth.auth().signOut();
+            removeObservers()
             return true;
         }
         catch {
